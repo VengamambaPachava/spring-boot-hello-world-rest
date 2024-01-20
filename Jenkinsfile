@@ -25,6 +25,7 @@ pipeline {
 			steps {
 				withAWS(credentials:'VennyAWSAccount'){
 					//sh 'aws ecr get-login-password --region region | docker login --username InfraUser --password-stdin 905418163709.dkr.ecr.us-east-1.amazonaws.com'
+					sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 905418163709.dkr.ecr.us-east-1.amazonaws.com'
 					sh 'docker tag helloworld:latest 905418163709.dkr.ecr.us-east-1.amazonaws.com/hello-world'
 				}
 				withAWS(credentials:'VennyAWSAccount'){
