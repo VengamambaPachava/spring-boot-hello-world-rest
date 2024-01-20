@@ -2,7 +2,8 @@ pipeline {
 	agent none
 	stages {
 		stage('Get Code'){
-			node {
+			agent any
+			steps {
 				checkout scm
 			}
 		}	
