@@ -1,6 +1,12 @@
 pipeline {
 	agent none
 	stages {
+		stage('Create Package'){
+			agent any
+			steps {
+				sh 'mvn clean install'
+			}	
+		}	
 		stage('Build Image') {
 			agent any
 			steps {
