@@ -23,6 +23,8 @@ pipeline {
 		stage('Deploy Image') {
 			agent any
 			steps {
+				sh 'TOKEN=$(aws ecr get-authorization-token --output text --query 'authorizationData[].authorizationToken')'
+				sh 'curl -i -H "Authorization: Basic $TOKEN" https://905418163709.dkr.ecr.region.amazonaws.com/hello-world:latest'
 				sh 'docker tag helloworld:latest 905418163709.dkr.ecr.us-east-1.amazonaws.com/hello-world'
 				sh 'docker push 905418163709.dkr.ecr.us-east-1.amazonaws.com/hello-world'
 			}
