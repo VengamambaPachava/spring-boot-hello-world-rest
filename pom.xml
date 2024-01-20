@@ -11,7 +11,7 @@
         <version>2.5.9</version>
     </parent>
 
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 <!-- INFO: Set when you want to use docker
     <packaging>jar</packaging>
 -->
