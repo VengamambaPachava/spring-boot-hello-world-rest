@@ -1,6 +1,11 @@
 pipeline {
 	agent none
 	stages {
+		stage('Get Code'){
+			steps {
+				checkout scm
+			}
+		}	
 		stage('Create Package'){
 			agent any
 			steps {
