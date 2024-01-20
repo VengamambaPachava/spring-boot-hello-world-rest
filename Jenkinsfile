@@ -16,14 +16,15 @@ pipeline {
 		stage('Build Image') {
 			agent any
 			steps {
-				sh 'docker build -t venny/helloworld:${BUILD_NUMBER} .'
-				sh 'docker tag venny/helloworld:${BUILD_NUMBER} venny/helloworld:latest'
+				sh 'docker build -t helloworld:${BUILD_NUMBER} .'
+				sh 'docker tag helloworld:${BUILD_NUMBER} helloworld:latest'
 			}
 		}
 		stage('Deploy Image') {
 			agent any
 			steps {
-				sh 'docker push venny/helloworld:latest'
+				sh 'docker tag helloworld:latest 905418163709.dkr.ecr.us-east-1.amazonaws.com/hello-world'
+				sh 'docker push 905418163709.dkr.ecr.us-east-1.amazonaws.com/hello-world'
 			}
 		}
 	}
